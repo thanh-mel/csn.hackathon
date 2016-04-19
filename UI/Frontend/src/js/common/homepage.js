@@ -3,17 +3,17 @@ Home = {
     var powerSlider = document.getElementById('behaviour');
 
     var range_all_sliders = {
-    	'min': [50],
-      // '10%': [75],
-      // '20%': [100],
-      // '30%': [125],
-      // '40%': [150],
-      // '50%': [175],
-      // '60%': [200],
-      // '70%': [225],
-      // '80%': [250],
-      // '90%': [275],
-    	'max': [300]
+    	'min': [50, 5],
+      '10%': [75, 5],
+      '20%': [100, 5],
+      '30%': [125, 5],
+      '40%': [150, 5],
+      '50%': [175, 5],
+      '60%': [200, 5],
+      '70%': [225, 5],
+      '80%': [250, 5],
+      '90%': [300, 100],
+    	'max': [600, 600]
     };
 
     noUiSlider.create(powerSlider, {
@@ -28,7 +28,7 @@ Home = {
       range: range_all_sliders,
       pips: {
       		mode: 'positions',
-      		values: [0, 20, 40, 60, 80, 100],
+      		values: [0, 20, 32, 40, 60, 80, 90, 100],
       		density: 4,
           format: wNumb({
         		decimals: 0,
@@ -38,6 +38,10 @@ Home = {
     	behaviour: 'drag-tap',
       format: wNumb({ decimals: 0 })
     });
+
+    var restrictionEl = $('.noUi-value:contains("130 kW")')
+    restrictionEl.addClass('restriction');
+    restrictionEl.prev().addClass('restriction-marker');
 
     var connectBar = document.createElement('div'),
     	connectBase = powerSlider.querySelector('.noUi-base');
