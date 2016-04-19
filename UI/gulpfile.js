@@ -137,7 +137,7 @@ var vendorCSSFiles = [
     'Frontend/vendors/css/animate.css',
     'Frontend/vendors/css/nouislider.css',
     'Frontend/vendors/css/nouislider.pips.css',
-    'Frontend/vendors/css/nouislider.pips.css'
+    'Frontend/vendors/css/nouislider.tooltips.css'
 ];
 gulp.task('compile-vendor-css', function() {
     return gulp.src(vendorCSSFiles)
@@ -157,7 +157,7 @@ var vendorJSFiles = [
     'Frontend/vendors/js/jquery.js',
     'Frontend/vendors/js/modernizr.js',
     'Frontend/vendors/js/nouislider.js',
-    'Frontend/vendors/js/wNumb.js'    
+    'Frontend/vendors/js/wNumb.js'
 ];
 var localJSFiles = [
     'Frontend/src/js/hackathon.js'
