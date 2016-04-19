@@ -1,0 +1,39 @@
+.breadcrumbs {
+  height: 54px;
+  background-color: $color-tertiary;
+
+  ul {
+    @include no-bullet-list;
+    margin-top: 1.2em;
+  }
+  li {
+    display: inline;
+    position: relative;
+    padding-right: 1.5em;
+
+    &:first-child {
+      &:before {
+        display: none;
+      }
+    }
+
+    &:before {
+      content: '/';
+      display: inline-block;
+      top: -.35em;
+      left: -.8em;
+      position: absolute;
+      font-size: 1.3em;
+    }
+
+    &.current {
+      a {
+        color: $link-color;
+      }
+    }
+  }
+
+  a {
+    color: $link-inactive-color;
+  }
+}

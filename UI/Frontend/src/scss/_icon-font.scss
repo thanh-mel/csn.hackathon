@@ -1,0 +1,96 @@
+@mixin icon-font {
+    font-family: 'icomoon';
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:    url('/Assets/fonts/icomoon/icomoon.eot?gbzpua');
+    src:    url('/Assets/fonts/icomoon/icomoon.eot?gbzpua#iefix') format('embedded-opentype'),
+        url('/Assets/fonts/icomoon/icomoon.ttf?gbzpua') format('truetype'),
+        url('/Assets/fonts/icomoon/icomoon.woff?gbzpua') format('woff'),
+        url('/Assets/fonts/icomoon/icomoon.svg?gbzpua#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bell-o:before {
+    content: "\e908";
+}
+.icon-phone:before {
+    content: "\f095";
+}
+.icon-fax:before {
+    content: "\f1ac";
+}
+.icon-body-hatchback:before {
+    content: "\e90f";
+}
+.icon-body-sedan:before {
+    content: "\e910";
+}
+.icon-body-suv:before {
+    content: "\e911";
+}
+.icon-body-wagon:before {
+    content: "\e912";
+}
+.icon-car:before {
+    content: "\e90d";
+}
+.icon-brochure:before {
+    content: "\e900";
+}
+.icon-drive:before {
+    content: "\e90b";
+}
+.icon-search2:before {
+    content: "\e90e";
+}
+.icon-search:before {
+    content: "\e90a";
+}
+.icon-dots:before {
+    content: "\e90c";
+}
+.icon-chevron-thin-left:before {
+    content: "\3c";
+}
+.icon-chevron-thin-right:before {
+    content: "\3e";
+}
+.icon-chevron-thin-up:before {
+    content: "\e901";
+}
+.icon-chevron-thin-down:before {
+    content: "\e907";
+}
+.icon-menu:before {
+    content: "\e902";
+}
+.icon-mobile:before {
+    content: "\e903";
+}
+.icon-facebook:before {
+    content: "\e904";
+}
+.icon-instagram:before {
+    content: "\e905";
+}
+.icon-twitter:before {
+    content: "\e906";
+}

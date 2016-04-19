@@ -1,0 +1,69 @@
+.owl-carousel {
+  .owl-stage-outer, .owl-stage, .owl-item {
+    height: 100%;
+  }
+
+  .carousel-item {
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  }
+
+  .owl-nav {
+    margin: 0;
+
+    .owl-prev, .owl-next {
+      @include icon-font;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      margin: 0;
+
+      &:after {
+        font-size: $font-xxl;
+      }
+      &:hover {
+        background-color: rgba(0,0,0,.2);
+      }
+    }
+    .owl-prev {
+      left: 20px;
+
+      &:after {
+        content: '\3c';
+      }
+    }
+    .owl-next {
+      right: 20px;
+
+      &:after {
+        content: '\3e';
+      }
+    }
+  }
+
+  .owl-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+
+    .owl-dot {
+      margin: 0;
+      span {
+        background-color: #FFF;
+      }
+    }
+  }
+
+  .owl-video-tn {
+    background-size: cover;
+  }
+  .owl-video-play-icon {
+    z-index: 6;
+  }
+}

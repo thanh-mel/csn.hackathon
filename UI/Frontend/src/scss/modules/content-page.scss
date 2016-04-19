@@ -1,0 +1,122 @@
+.page-content {
+  background-color: $white;
+
+  .page-header {
+    height: 120px;
+    background-color: #191919;
+
+    .logo {
+      margin-top: $padding-md;
+    }
+  }
+
+  .page-inner {
+    background-color: $white;
+
+    @include media-query(md) {
+      &.contains-hero-image {
+        transform: translateX(50px) translateY(-80px);
+
+        .breadcrumbs {
+          background-color: $white;
+        }
+        .breadcrumbs .container {
+          width: 100%;
+          padding-left: $padding-lg;
+          padding-top: $padding-sm;
+        }
+        div[data-fullwidth='1'] {
+          transform: translateX(-50px);
+        }
+        .row {
+          padding-left: 50px;
+          padding-right: 100px;
+          max-width: 720px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+
+  .page-hero {
+    height: 350px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .row {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media-query(md) {
+      max-width: none;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+
+  iframe {
+    width: 100%;
+
+    @include media-query(sm, true) {
+      max-height: 300px;
+    }
+  }
+  div[data-fullwidth='1'] {
+
+  }
+
+  .column img {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .alt-background {
+    background-color: $black;
+    color: $white;
+    margin: $padding-sm 0;
+
+    @include media-query(md) {
+      margin: $padding-lg 0;
+    }
+  }
+  blockquote {
+    padding: 0;
+    margin: $padding-lg;
+    position: relative;
+    font-size: 1.2em;
+
+    &:before, &:after {
+      position: absolute;
+      font-size: 4em;
+      line-height: 1;
+    }
+    &:before {
+      top: -$padding-md;
+      left: -$padding-xl;
+      content: "\201C";
+    }
+    &:after {
+      bottom: -$padding-xl;
+      right: -$padding-md;
+      content: "\201D";
+    }
+
+    @include media-query(md) {
+      padding: $padding-lg $padding-xxxl;
+      font-size: 1.4em;
+
+      &:before {
+        top: 0;
+        left: $padding-lg;
+      }
+      &:after {
+        bottom: -$padding-lg;
+        right: $padding-lg;
+      }
+    }
+  }
+}

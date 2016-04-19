@@ -1,0 +1,190 @@
+//=============================================================
+// Rem conversion
+//=============================================================
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+  $px : ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / parseInt($font-size-base) + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val *  parseInt($font-size-base) + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px;
+  } @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+}
+
+@function remtopx($value){
+  $px : ();
+  $unit: unit($value);
+  @if $unit == "rem" {
+    $val: parseInt($value);
+    @return append($px, ($val *  parseInt($font-size-base) + px));
+  } @else{
+    @return $value;
+  }
+}
+
+//=============================================================
+// Media query
+//=============================================================
+@mixin media-query($media-query, $max: false){
+  $minMax: "min";
+  @if $max {
+    $minMax: "max";
+  }
+  @if $media-query == lg {
+    @media only screen and (#{$minMax}-width: $screen-lg) { @content; }
+  }
+
+  @if $media-query == md {
+    @media only screen and (#{$minMax}-width: #{$screen-md}) { @content; }
+  }
+
+  @if $media-query == sm {
+    @media only screen and (#{$minMax}-width: #{$screen-sm}) { @content; }
+  }
+
+  @if $media-query == xs {
+    @media only screen and (#{$minMax}-width: #{$screen-xs}) { @content; }
+  }
+}
+
+//=============================================================
+// Modifiers
+//=============================================================
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+//Use this sparingly
+@mixin subelement($parent, $element) {
+  #{$parent}__#{$element} {
+    @content;
+  }
+}
+
+//=============================================================
+// Aspect ratio stuff
+//=============================================================
+
+@mixin content-aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin image-aspect-ratio($padding:50%) {
+  @extend %display-block;
+  @extend %position-relative;
+  width: 100%;
+  height: 0;
+  padding: $padding 0 0 0;
+  overflow: hidden;
+  img{
+    @extend %position-absolute;
+    @extend %display-block;
+    max-width: 100%;
+    max-height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+
+//=============================================================
+// Ellipsis
+//=============================================================
+@mixin ellipsis(){
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+//=============================================================
+// Misc
+//=============================================================
+@mixin image-replace($image: null, $display: block) {
+	*text-indent: -9999px; /* IE 6/7 fallback */
+	overflow: hidden;
+	background: transparent url($image) no-repeat;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 0;
+		height: 100%;
+	}
+
+	@if $display != null {
+		display: $display;
+	}
+}
+
+@mixin vertical-align(){
+  @extend %position-absolute;
+  transform: translateY(-50%);
+  top:50%;
+}
+
+@mixin hidden-input{
+  @extend %position-absolute;
+  @include opacity(0);
+  visibility: hidden;
+}
+
+@mixin blur-effect(){
+  .menu--active &{
+    filter: blur(1px);
+  }
+}

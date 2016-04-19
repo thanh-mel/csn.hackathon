@@ -1,0 +1,12 @@
+$font-family: 'HelveticaNeue', Arial, sans-serif;
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('/Assets/fonts/HelveticaNeue/HelveticaNeueReg.eot'); /* IE9 Compat Modes */
+  src: url('/Assets/fonts/HelveticaNeue/HelveticaNeueReg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/Assets/fonts/HelveticaNeue/HelveticaNeueReg.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/Assets/fonts/HelveticaNeue/HelveticaNeueReg.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/Assets/fonts/HelveticaNeue/HelveticaNeueReg.svg#HelveticaNeue') format('svg'); /* Legacy iOS */
+   font-weight: normal;
+   font-style: normal;
+}

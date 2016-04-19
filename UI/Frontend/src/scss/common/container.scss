@@ -1,0 +1,9 @@
+section {
+  padding: $padding-lg;
+}
+
+.container {
+  @include media-query(sm, true) {
+    width: auto;
+  }
+}

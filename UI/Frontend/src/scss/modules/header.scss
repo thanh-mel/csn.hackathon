@@ -1,0 +1,15 @@
+.page-home, .page-showroom {
+  .page-header {
+    position: absolute;
+    top: $padding-lg;
+    left: $padding-lg;
+    z-index: 3;
+    width: calc(100% - #{$padding-lg});
+
+    .container {
+      width: auto;
+      padding: 0;
+      position: relative;
+    }
+  }
+}
