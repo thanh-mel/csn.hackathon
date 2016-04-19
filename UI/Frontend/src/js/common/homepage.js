@@ -37,14 +37,14 @@ Home = {
       		density: 4,
           format: wNumb({
         		decimals: 0,
-        		postfix: ' kW'
+        		postfix: ' Wkg'
         	})
     	},
     	behaviour: 'drag-tap',
       format: wNumb({ decimals: 0 })
     });
 
-    var restrictionEl = $('.noUi-value:contains("130 kW")')
+    var restrictionEl = $('.noUi-value:contains("130 Wkg")')
     restrictionEl.addClass('restriction');
     restrictionEl.prev().addClass('restriction-marker');
 
@@ -64,6 +64,9 @@ Home = {
     	}
     	// Pick left for the first handle, right for the second.
     	connectBar.style[handle ? 'right' : 'left'] = offset + '%';
+
+      $('.min-value').html(values[0]);
+      $('.max-value').html(values[1]);
 
       console.log("slider values: " + values);
     });
