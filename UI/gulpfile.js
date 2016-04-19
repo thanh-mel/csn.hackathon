@@ -120,10 +120,10 @@ gulp.task('compile-sass', function() {
             keepSpecialComments: 0
         }))
         .pipe(rename('styles.css'))
-        .pipe(base64({
-            maxImageSize: 8 * 1024,
-            debug: true
-        }))
+        // .pipe(base64({
+        //     maxImageSize: 8 * 1024,
+        //     debug: true
+        // }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('Assets/css'))
         .pipe(filesize({ title: 'styles.css'} ))
@@ -137,7 +137,8 @@ var vendorCSSFiles = [
     'Frontend/vendors/css/animate.css',
     'Frontend/vendors/css/nouislider.css',
     'Frontend/vendors/css/nouislider.pips.css',
-    'Frontend/vendors/css/nouislider.tooltips.css'
+    'Frontend/vendors/css/nouislider.tooltips.css',
+    'Frontend/vendors/css/tipso.css'
 ];
 gulp.task('compile-vendor-css', function() {
     return gulp.src(vendorCSSFiles)
@@ -157,7 +158,8 @@ var vendorJSFiles = [
     'Frontend/vendors/js/jquery.js',
     'Frontend/vendors/js/modernizr.js',
     'Frontend/vendors/js/nouislider.js',
-    'Frontend/vendors/js/wNumb.js'
+    'Frontend/vendors/js/wNumb.js',
+    'Frontend/vendors/js/tipso.js'
 ];
 var localJSFiles = [
     'Frontend/src/js/hackathon.js'
@@ -228,7 +230,7 @@ gulp.task('browserSync', ['build'], function() {
                     extensions: ['html']
                 },
                 routes: {
-                    "/content-page":     './Frontend/static/content.html'
+                    "/slider":     './Frontend/static/slider.html'
                 }
             }
         }

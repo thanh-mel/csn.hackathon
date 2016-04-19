@@ -1,6 +1,10 @@
 Home = {
   init: function() {
-    var powerSlider = document.getElementById('behaviour');
+    $('.anchor').click(function() {
+      $('.page-wrapper').toggleClass('showing-popup');
+    })
+
+    var powerSlider = document.getElementById('slider');
 
     var range_all_sliders = {
     	'min': [50, 5],
