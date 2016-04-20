@@ -29,14 +29,41 @@
   .popup {
     @include transition(all .5s ease-in);
     opacity: 1;
-    background-color: #FFF;
-    padding: $padding-lg;
     position: absolute;
-    top: 1605px;
-    left: 220px;
+    top: 1475px;
+    left: 225px;
     width: 700px;
-    height: 300px;
-    border-radius: 4px;
-    border: 1px solid #CCC;
+    height: 550px;
+  }
+
+  .popup-inner {
+  	position: relative;
+  	background: #FFF;
+  	border: 2px solid #AAA;
+    padding: $padding-lg;
+    border-radius: 6px;
+  }
+  .popup-inner:after, .popup-inner:before {
+  	right: 100%;
+  	top: 50%;
+  	border: solid transparent;
+  	content: " ";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  }
+
+  .popup-inner:after {
+  	border-color: transparent;
+  	border-right-color: #FFF;
+  	border-width: 30px;
+  	margin-top: -30px;
+  }
+  .popup-inner:before {
+  	border-color: transparent;
+  	border-right-color: #AAA;
+  	border-width: 33px;
+  	margin-top: -33px;
   }
 }

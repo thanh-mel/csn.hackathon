@@ -21,34 +21,41 @@
                 </div>
 
                 <div class="popup">
-                    <div class="popup-content">
-                        <div class="slider-container">
-                            <div id="slider"></div>
-                        </div>
-
-                        <div>
-                            <p>You have selected cars with power / weight ratio from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> Wkg</p>
-
-                            <div class="column-container">
-                                <div class="column-min column">
-                                    <h4>From <span class="min-value"></span> Wkg</h4>
-                                    <ul>
-                                        <!-- <li>Toyota Yaris</li>
-                                        <li>Mitsubishi Colt</li>
-                                        <li>Kia Getz</li> -->
-                                    </ul>
+                    <div class="popup-inner">
+                        <div class="popup-content">
+                            <div class="power-weight-slider">
+                                <div class="slider-container">
+                                    <div id="power-weight-slider"></div>
                                 </div>
 
-                                <div class="column-max column">
-                                    <h4>Up to <span class="max-value"></span> Wkg</h4>
-                                    <ul>
-                                        <!-- <li>Mercedes AMG</li>
-                                        <li>Hummer H3</li>
-                                        <li>Ford Falcon XR6 Turbo</li> -->
-                                    </ul>
+                                <button class="btn-submit" type="button">Find cars</button>
+
+                                <div class="slider-details">
+                                    <p>You have selected cars with power / weight ratio from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> Wkg</p>
+
+                                    <div class="column-container">
+                                        <div class="column-min column">
+                                            <h4>From <span class="min-value"></span> Wkg</h4>
+                                            <ul>
+                                            </ul>
+                                        </div>
+
+                                        <div class="column-max column">
+                                            <h4>Up to <span class="max-value"></span> Wkg</h4>
+                                            <ul>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="footnote">
+                                        <h5>Did you know?</h5>
+                                        <p>Generally, a car with a high power to weight ratio will accelerate faster than one with a low power to weight ratio.</p>
+                                        <p>For example, a motorcycle is fast despite having a small engine in comparison to a truck because the power to weight ratio is greater than that of a truck. This means, if two vehicles had the same size engine, such as a motorcycle and car, the motorcyle is more likely to be fastest because it has less weight to move.</p>
+                                        <p>Power to weight ratio is single handedly one of the best predicting techniques to measure speed.</p>
+                                    </div>
+
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -57,10 +64,5 @@
 
         <script src="Assets/js/hackathon.js"></script>
         <script src="Assets/js/vendors.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                app.Home.init();
-            })
-        </script>
     </body>
 </html>

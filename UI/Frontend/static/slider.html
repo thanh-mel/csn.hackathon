@@ -19,35 +19,51 @@
             <div class="page-body">
 
                 <div class="page-inner homepage-content">
-
-                    <h2>What does these numbers mean?</h2>
-                    <div class="slider-container">
-                        <div id="slider"></div>
-                    </div>
-
-                    <div>
-                        <p>You have selected cars with power / weight ratio from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> Wkg</p>
-
-                        <div class="column-container">
-                            <div class="column-min column">
-                                <h4>From <span class="min-value"></span> Wkg</h4>
-                                <ul>
-                                    <!-- <li>Toyota Yaris</li>
-                                    <li>Mitsubishi Colt</li>
-                                    <li>Kia Getz</li> -->
-                                </ul>
-                            </div>
-
-                            <div class="column-max column">
-                                <h4>Up to <span class="max-value"></span> Wkg</h4>
-                                <ul>
-                                    <!-- <li>Mercedes AMG</li>
-                                    <li>Hummer H3</li>
-                                    <li>Ford Falcon XR6 Turbo</li> -->
-                                </ul>
-                            </div>
+                    <div class="power-weight-slider">
+                        <div class=" slider-container">
+                            <div id="power-weight-slider"></div>
                         </div>
 
+                        <div class="slider-details">
+                            <p>You have selected cars with power / weight ratio from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> Wkg</p>
+                            <div class="column-container">
+                                <div class="column-min column">
+                                    <h4>From <span class="min-value"></span> Wkg</h4>
+                                    <ul>
+                                    </ul>
+                                </div>
+
+                                <div class="column-max column">
+                                    <h4>Up to <span class="max-value"></span> Wkg</h4>
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="power-slider">
+                        <div class="slider-container">
+                            <div id="power-slider"></div>
+                        </div>
+
+                        <div class="slider-details">
+                            <p>You have selected cars with power from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> kW</p>
+                            <div class="column-container">
+                                <div class="column-min column">
+                                    <h4>From <span class="min-value"></span> kW</h4>
+                                    <ul>
+                                    </ul>
+                                </div>
+
+                                <div class="column-max column">
+                                    <h4>Up to <span class="max-value"></span> kW</h4>
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -58,10 +74,5 @@
 
         <script src="Assets/js/hackathon.js"></script>
         <script src="Assets/js/vendors.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                app.Home.init();
-            })
-        </script>
     </body>
 </html>

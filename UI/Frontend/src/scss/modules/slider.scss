@@ -102,6 +102,39 @@
       margin: 0;
       padding: 0;
       list-style-type: none;
+      height: 70px;
+
+      &.is-loading {
+        background: transparent url('/Assets/images/ajax-loader-small.gif') no-repeat top left;
+      }
+    }
+  }
+  .column-container {
+    @include clearfix;
+  }
+  .slider-details {
+    margin: 30px 0 0;
+  }
+  .btn-submit {
+    color: #FFF;
+    padding: 5px 15px;
+    background-color: #004F88;
+    border: 0;
+    font-size: .9em;
+    float: right;
+  }
+  .footnote {
+    border: 1px solid #ccc;
+    background-color: #EEE;
+    padding: 10px;
+    margin: 20px 0 0;
+
+    h5 {
+      margin: 0 0 10px;
+    }
+    p {
+      font-size: .85em;
+      margin: 0 0 5px;
     }
   }
 }

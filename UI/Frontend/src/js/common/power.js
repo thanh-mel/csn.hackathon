@@ -1,10 +1,6 @@
-Home = {
+Power = {
   init: function() {
-    $('.anchor').click(function() {
-      $('.page-wrapper').toggleClass('showing-popup');
-    })
-
-    this.powerSlider = document.getElementById('slider');
+    this.powerSlider = document.getElementById('power-slider');
 
     var range_all_sliders = {
     	'min': [50, 5],
@@ -16,14 +12,14 @@ Home = {
       '60%': [200, 5],
       '70%': [225, 5],
       '80%': [250, 5],
-      '90%': [300, 10],
-      '95%': [350, 50],
-    	'max': [600]
+      '90%': [275, 5],
+      '95%': [300, 10],
+    	'max': [350]
     };
 
     noUiSlider.create(this.powerSlider, {
-    	start: [80, 150],
-      step: 10,
+    	start: [75, 125],
+      step: 5,
       connect: true,
       animate: true,
       tooltips: [
@@ -33,20 +29,16 @@ Home = {
       range: range_all_sliders,
       pips: {
       		mode: 'positions',
-      		values: [0, 20, 32, 40, 60, 80, 90, 100],
+      		values: [0, 10, 20, 30, 40, 50, 60, 70, 80, 95],
       		density: 4,
           format: wNumb({
         		decimals: 0,
-        		postfix: ' Wkg'
+        		postfix: ' kW'
         	})
     	},
     	behaviour: 'drag-tap',
       format: wNumb({ decimals: 0 })
     });
-
-    var restrictionEl = $('.noUi-value:contains("130 Wkg")')
-    restrictionEl.addClass('restriction');
-    restrictionEl.prev().addClass('restriction-marker');
 
     var connectBar = document.createElement('div'),
     	connectBase = this.powerSlider.querySelector('.noUi-base');
@@ -56,6 +48,7 @@ Home = {
     connectBase.appendChild(connectBar);
 
     var _this = this;
+    this.fetch();
 
     this.powerSlider.noUiSlider.on('update', function( values, handle, a, b, handlePositions ) {
     	var offset = handlePositions[handle];
@@ -68,6 +61,10 @@ Home = {
     	connectBar.style[handle ? 'right' : 'left'] = offset + '%';
 
       // console.log("slider values: " + values);
+      var minVal = values[0];
+      var maxVal = values[1];
+      $('.power-slider .min-value').html(minVal);
+      $('.power-slider .max-value').html(maxVal);
     });
 
 
@@ -77,36 +74,37 @@ Home = {
 
       // Force a margin between min and max
       if(maxVal - minVal < 20) {
-        if($(powerSlider).data('min') !== undefined) {
-            minVal = $(powerSlider).data('min');
+        if($(_this.powerSlider).data('min') !== undefined) {
+            minVal = $(_this.powerSlider).data('min');
         }
-        if($(powerSlider).data('max') !== undefined) {
-            maxVal = $(powerSlider).data('max');
+        if($(_this.powerSlider).data('max') !== undefined) {
+            maxVal = $(_this.powerSlider).data('max');
         }
         slider.noUiSlider.set([minVal, maxVal]);
       }
-      $('.min-value').html(minVal);
-      $('.max-value').html(maxVal);
 
-      $(this.powerSlider).data('min', minVal);
-      $(this.powerSlider).data('max', maxVal);
+      $('.power-slider .min-value').html(minVal);
+      $('.power-slider .max-value').html(maxVal);
+
+      $(_this.powerSlider).data('min', minVal);
+      $(_this.powerSlider).data('max', maxVal);
 
       _this.fetch();
     })
   },
 
   fetch: function() {
-    console.log(this);
+    // console.log(this);
 
     var values = this.powerSlider.noUiSlider.get();
     var minVal = values[0];
     var maxVal = values[1];
     var _this = this;
 
-    $('.column-min ul, .column-max ul').addClass('is-loading');
-    $('.column-min ul, .column-max ul').empty();
+    $('.power-slider .column-min ul, .power-slider .column-max ul').addClass('is-loading');
+    $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
 
-    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/specs/power-to-weight-ratio?min=' + minVal + '&max=' + maxVal + '&year=2009')
+    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/range/power-weight-ratio?min=' + minVal + '&max=' + maxVal + '&year=2015')
         .then(function(error, text, xhr) {
           if (error) {
             _this.results = null;
@@ -115,28 +113,38 @@ Home = {
             _this.results = JSON.parse(xhr.response);
             _this.populateResults();
           }
-        })
+        });
+
+    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/specs/power/range?minpowerweightratio=' + minVal + '&maxpowerweightratio=' + maxVal + '&year=2015')
+        .then(function(error, text, xhr) {
+          if (error) {
+            _this.submitUrl = null;
+          } else {
+            _this.submitUrl = JSON.parse(xhr.response).Url;
+            console.log('set url: ' + _this.submitUrl);
+          }
+        });
   },
 
   populateResults: function() {
     console.log('parseResults');
     var results = this.results;
-    var top3FromMin = _.sampleSize(results.MinRange, 3);
-    var top3FromMax = _.sampleSize(results.MaxRange, 3);
+    var top3FromMin = _.sampleSize(_.uniqBy(_.shuffle(results.MinRange), 'Make'), 3);
+    var top3FromMax = _.sampleSize(_.uniqBy(_.shuffle(results.MaxRange), 'Make'), 3);
 
-    $('.column-min ul, .column-max ul').removeClass('is-loading');
+    $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
 
     _.map(top3FromMin, function(item) {
-      $('.column-min ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
+      $('.power-slider .column-min ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
     })
     _.map(top3FromMax, function(item) {
-      $('.column-max ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
+      $('.power-slider .column-max ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
     })
   },
 
   resetResults: function() {
-    $('.column-min ul, .column-max ul').removeClass('is-loading');
+    $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
   }
 }
 
-module.exports = Home;
+module.exports = Power;
