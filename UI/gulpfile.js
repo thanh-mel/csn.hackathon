@@ -155,11 +155,13 @@ gulp.task('compile-vendor-css', function() {
 
 /*  CONCAT & MINIFY JS FILES  */
 var vendorJSFiles = [
+    'Frontend/vendors/js/lodash.js',
     'Frontend/vendors/js/jquery.js',
     'Frontend/vendors/js/modernizr.js',
     'Frontend/vendors/js/nouislider.js',
     'Frontend/vendors/js/wNumb.js',
-    'Frontend/vendors/js/tipso.js'
+    'Frontend/vendors/js/tipso.js',
+    'Frontend/vendors/js/promise.js'
 ];
 var localJSFiles = [
     'Frontend/src/js/hackathon.js'
