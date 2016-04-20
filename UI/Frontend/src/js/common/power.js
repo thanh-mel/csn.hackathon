@@ -104,7 +104,7 @@ Power = {
     $('.power-slider .column-min ul, .power-slider .column-max ul').addClass('is-loading');
     $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
 
-    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/range/power-weight-ratio?min=' + minVal + '&max=' + maxVal + '&year=2015')
+    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/range/power?min=' + minVal + '&max=' + maxVal + '&year=2011')
         .then(function(error, text, xhr) {
           if (error) {
             _this.results = null;
@@ -115,15 +115,15 @@ Power = {
           }
         });
 
-    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/specs/power/range?minpowerweightratio=' + minVal + '&maxpowerweightratio=' + maxVal + '&year=2015')
-        .then(function(error, text, xhr) {
-          if (error) {
-            _this.submitUrl = null;
-          } else {
-            _this.submitUrl = JSON.parse(xhr.response).Url;
-            console.log('set url: ' + _this.submitUrl);
-          }
-        });
+    // promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/specs/power/range?minpowerweightratio=' + minVal + '&maxpowerweightratio=' + maxVal + '&year=2015')
+    //     .then(function(error, text, xhr) {
+    //       if (error) {
+    //         _this.submitUrl = null;
+    //       } else {
+    //         _this.submitUrl = JSON.parse(xhr.response).Url;
+    //         console.log('set url: ' + _this.submitUrl);
+    //       }
+    //     });
   },
 
   populateResults: function() {

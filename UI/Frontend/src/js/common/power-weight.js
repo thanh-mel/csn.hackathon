@@ -96,7 +96,7 @@ PowerWeightRatio = {
         if($(_this.powerWeightSlider).data('max') !== undefined) {
             maxVal = $(_this.powerWeightSlider).data('max');
         }
-        slider.noUiSlider.set([minVal, maxVal]);
+        _this.powerWeightSlider.noUiSlider.set([minVal, maxVal]);
       }
 
       $('.power-weight-slider .min-value').html(minVal);
@@ -120,7 +120,7 @@ PowerWeightRatio = {
     $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').addClass('is-loading');
     $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').empty();
 
-    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/range/power-weight-ratio?min=' + minVal + '&max=' + maxVal + '&year=2015')
+    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/range/power-weight-ratio?min=' + minVal + '&max=' + maxVal + '&year=2011')
         .then(function(error, text, xhr) {
           if (error) {
             _this.results = null;
@@ -131,7 +131,7 @@ PowerWeightRatio = {
           }
         });
 
-    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/specs/power/range?minpowerweightratio=' + minVal + '&maxpowerweightratio=' + maxVal + '&year=2015')
+    promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/specs/power/range?minpowerweightratio=' + minVal + '&maxpowerweightratio=' + maxVal + '&year=2011')
         .then(function(error, text, xhr) {
           if (error) {
             _this.submitUrl = null;
@@ -151,10 +151,12 @@ PowerWeightRatio = {
     $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').removeClass('is-loading');
 
     _.map(top3FromMin, function(item) {
-      $('.power-weight-slider .column-min ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
+      item.encodedUrl = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(item.Url);
+      $('.power-weight-slider .column-min ul').append('<li><a href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
     })
     _.map(top3FromMax, function(item) {
-      $('.power-weight-slider .column-max ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
+      item.encodedUrl = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(item.Url);
+      $('.power-weight-slider .column-max ul').append('<li><a href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
     })
   },
 
