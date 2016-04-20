@@ -3,49 +3,109 @@
     height: 100%;
     min-height: 3200px;
     width: 950px;
-    background: transparent url('/Assets/images/image-2.jpg') no-repeat top left;
+    background: transparent url('/Assets/images/image-1.jpg') no-repeat top left;
     background-size: contain;
     position: relative;
 
-    &:before {
-      content: '';
-      background: transparent url('/Assets/images/image-1.jpg') no-repeat top left;
-      background-size: contain;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
+    // &:before {
+    //   content: '';
+    //   background: transparent url('/Assets/images/image-1.jpg') no-repeat top left;
+    //   background-size: contain;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   display: block;
+    //   width: 100%;
+    //   height: 100%;
+    // }
+
+    &:after {
+        @include transition(all .1s ease-in);
+        content: '';
+        background-color: rgba(0, 0, 0, .4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        opacity: 0;
     }
 
     &.showing-popup {
-      &:before {
-        opacity: 0;
+      // &:before {
+      //   opacity: 0;
+      // }
+      &:after {
+        visibility: visible;
+        opacity: 1;
+      }
+      .popup {
+        opacity: 1;
+        // visibility: visible;
+      }
+      .anchor-power {
+        background: transparent url('/Assets/images/image-power-field.jpg') no-repeat 0 0;
+        background-size: cover;
+        z-index: 4;
       }
     }
   }
 
+  small {
+    margin: 5px 0 0;
+    display: inline-block;
+  }
+  .icon-p-plate {
+    background-image: url('/Assets/images/p_plates.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    margin: 0 5px 0 0;
+  }
+  .btn-close {
+    font-size: .7em;
+    padding: 3px 10px 2px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #CCC;
+
+    i {
+      font-style: normal;
+    }
+  }
+
   .popup {
-    @include transition(all .5s ease-in);
-    opacity: 1;
+    @include transition(all .1s ease-in);
+    opacity: 0;
+    // visibility: hidden;
     position: absolute;
     top: 1475px;
-    left: 225px;
+    left: 240px;
     width: 700px;
     height: 550px;
+    z-index: 4;
   }
 
   .popup-inner {
   	position: relative;
   	background: #FFF;
   	border: 2px solid #AAA;
-    padding: $padding-lg;
-    border-radius: 6px;
+    // padding: $padding-lg;
+    border-radius: 0 6px 6px 6px;
   }
   .popup-inner:after, .popup-inner:before {
   	right: 100%;
-  	top: 50%;
+  	top: 240px;
   	border: solid transparent;
   	content: " ";
   	height: 0;
@@ -66,4 +126,52 @@
   	border-width: 33px;
   	margin-top: -33px;
   }
+}
+
+
+
+.etabs {
+    margin: 0;
+    padding: 0;
+}
+.tab {
+    display: inline-block;
+    background: #E3E3E3;
+    border: solid 2px #AAA;
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    padding-top: 6px;
+}
+.tab a {
+    font-size: 14px;
+    line-height: 2em;
+    display: block;
+    padding: 0 20px;
+    outline: none;
+    color: #AAA;
+}
+.tab.active {
+    background: #fff;
+    position: relative;
+    top: 0px;
+    left: -2px;
+    border-color: #AAA;
+    border-bottom-color: #FFF;
+}
+.tab a.active {
+    font-weight: bold;
+    color: #333;
+}
+.tab-container {
+  margin-top: -38px;
+}
+.tab-content {
+  padding: $padding-lg;
+}
+.tab-container .panel-container {
+    background: #fff;
+    border: solid #333 3px;
+    padding: 10px;
+    -moz-border-radius: 0 6px 6px 6px;
+    -webkit-border-radius: 0 6px 6px 6px;
 }

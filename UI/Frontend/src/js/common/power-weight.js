@@ -1,17 +1,5 @@
 PowerWeightRatio = {
   init: function() {
-    $('.anchor').click(function() {
-      $('.page-wrapper').toggleClass('showing-popup');
-    })
-
-    $('.power-weight-slider .btn-submit').click(function() {
-      if(app.PowerWeightRatio.submitUrl) {
-        window.location = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(app.PowerWeightRatio.submitUrl);
-      } else {
-        window.location = 'http://www.carsales.com.au/cars/results';
-      }
-    })
-
     this.powerWeightSlider = document.getElementById('power-weight-slider');
 
     var range_all_sliders = {
@@ -97,6 +85,8 @@ PowerWeightRatio = {
             maxVal = $(_this.powerWeightSlider).data('max');
         }
         _this.powerWeightSlider.noUiSlider.set([minVal, maxVal]);
+      } else {
+        _this.fetch();
       }
 
       $('.power-weight-slider .min-value').html(minVal);
@@ -104,8 +94,6 @@ PowerWeightRatio = {
 
       $(_this.powerWeightSlider).data('min', minVal);
       $(_this.powerWeightSlider).data('max', maxVal);
-
-      _this.fetch();
     })
   },
 
@@ -137,13 +125,13 @@ PowerWeightRatio = {
             _this.submitUrl = null;
           } else {
             _this.submitUrl = JSON.parse(xhr.response).Url;
-            console.log('set url: ' + _this.submitUrl);
+            // console.log('set url: ' + _this.submitUrl);
           }
         });
   },
 
   populateResults: function() {
-    console.log('parseResults');
+    // console.log('parseResults');
     var results = this.results;
     var top3FromMin = _.sampleSize(_.uniqBy(_.shuffle(results.MinRange), 'Make'), 3);
     var top3FromMax = _.sampleSize(_.uniqBy(_.shuffle(results.MaxRange), 'Make'), 3);

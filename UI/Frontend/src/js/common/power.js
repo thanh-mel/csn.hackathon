@@ -80,7 +80,9 @@ Power = {
         if($(_this.powerSlider).data('max') !== undefined) {
             maxVal = $(_this.powerSlider).data('max');
         }
-        slider.noUiSlider.set([minVal, maxVal]);
+        _this.powerSlider.noUiSlider.set([minVal, maxVal]);
+      } else {
+        _this.fetch();
       }
 
       $('.power-slider .min-value').html(minVal);
@@ -88,8 +90,6 @@ Power = {
 
       $(_this.powerSlider).data('min', minVal);
       $(_this.powerSlider).data('max', maxVal);
-
-      _this.fetch();
     })
   },
 
@@ -114,20 +114,10 @@ Power = {
             _this.populateResults();
           }
         });
-
-    // promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/specs/power/range?minpowerweightratio=' + minVal + '&maxpowerweightratio=' + maxVal + '&year=2015')
-    //     .then(function(error, text, xhr) {
-    //       if (error) {
-    //         _this.submitUrl = null;
-    //       } else {
-    //         _this.submitUrl = JSON.parse(xhr.response).Url;
-    //         console.log('set url: ' + _this.submitUrl);
-    //       }
-    //     });
   },
 
   populateResults: function() {
-    console.log('parseResults');
+    // console.log('parseResults');
     var results = this.results;
     var top3FromMin = _.sampleSize(_.uniqBy(_.shuffle(results.MinRange), 'Make'), 3);
     var top3FromMax = _.sampleSize(_.uniqBy(_.shuffle(results.MaxRange), 'Make'), 3);
@@ -135,10 +125,12 @@ Power = {
     $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
 
     _.map(top3FromMin, function(item) {
-      $('.power-slider .column-min ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
+      item.encodedUrl = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(item.Url);
+      $('.power-slider .column-min ul').append('<li><a href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
     })
     _.map(top3FromMax, function(item) {
-      $('.power-slider .column-max ul').append('<li>' + item.Make + ' ' + item.Model + '</li>');
+      item.encodedUrl = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(item.Url);
+      $('.power-slider .column-max ul').append('<li><a href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
     })
   },
 

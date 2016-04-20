@@ -157,11 +157,14 @@ gulp.task('compile-vendor-css', function() {
 var vendorJSFiles = [
     'Frontend/vendors/js/lodash.js',
     'Frontend/vendors/js/jquery.js',
+    'Frontend/vendors/js/jquery-migrate-1.3.0.js',
     'Frontend/vendors/js/modernizr.js',
     'Frontend/vendors/js/nouislider.js',
     'Frontend/vendors/js/wNumb.js',
     'Frontend/vendors/js/tipso.js',
-    'Frontend/vendors/js/promise.js'
+    'Frontend/vendors/js/promise.js',
+    'Frontend/vendors/js/jquery.easytabs.js',
+    'Frontend/vendors/js/jquery.hashchange.min.js'
 ];
 var localJSFiles = [
     'Frontend/src/js/hackathon.js'

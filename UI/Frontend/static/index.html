@@ -17,45 +17,95 @@
         <![endif]-->
         <div class="page-wrapper" id="top">
             <div class="page-body">
-                <div class="anchor">
+                <div class="anchor-power">
+                </div>
+
+                <div class="anchor-power-weight">
                 </div>
 
                 <div class="popup">
                     <div class="popup-inner">
                         <div class="popup-content">
-                            <div class="power-weight-slider">
-                                <div class="slider-container">
-                                    <div id="power-weight-slider"></div>
-                                </div>
-                                <small>P-platers are probihited to drive any cars with power-to-weight ratios higher than 130kW</small>
-                                <button class="btn-submit" type="button">Find cars</button>
+                            <a class="btn-close"><i>X</i> Close</a>
 
-                                <div class="slider-details">
-                                    <p>You have selected cars with power / weight ratio from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> Wkg</p>
+<div id="tab-container" class="tab-container">
+    <ul class='etabs'>
+      <li class='tab'><a href="#power">Power</a></li>
+      <li class='tab'><a href="#power-weight">Power to Weight Ratio</a></li>
+    </ul>
+    <div id="power" class="tab-content">
 
-                                    <div class="column-container">
-                                        <div class="column-min column">
-                                            <h4>From <span class="min-value"></span> Wkg</h4>
-                                            <ul>
-                                            </ul>
-                                        </div>
+        <div class="power-slider">
+            <div class="slider-container">
+                <div id="power-slider"></div>
+            </div>
+            <button class="btn-submit" type="button">Search cars</button>
 
-                                        <div class="column-max column">
-                                            <h4>Up to <span class="max-value"></span> Wkg</h4>
-                                            <ul>
-                                            </ul>
-                                        </div>
-                                    </div>
+            <div class="slider-details">
+                <p>You have selected cars with power from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> kW</p>
+                <div class="column-container">
+                    <div class="column-min column">
+                        <h4>From <span class="min-value"></span> kW</h4>
+                        <ul>
+                        </ul>
+                    </div>
 
-                                    <div class="footnote">
-                                        <h5>Did you know?</h5>
-                                        <p>Generally, a car with a high power to weight ratio will accelerate faster than one with a low power to weight ratio.</p>
-                                        <p>For example, a motorcycle is fast despite having a small engine in comparison to a truck because the power to weight ratio is greater than that of a truck. This means, if two vehicles had the same size engine, such as a motorcycle and car, the motorcyle is more likely to be fastest because it has less weight to move.</p>
-                                        <p>Power to weight ratio is single handedly one of the best predicting techniques to measure speed.</p>
-                                    </div>
+                    <div class="column-max column">
+                        <h4>Up to <span class="max-value"></span> kW</h4>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
 
-                                </div>
-                            </div>
+                <div class="footnote">
+                    <h5>Did you know?</h5>
+                    <p><b>Engine power</b> or horsepower is the maximum power that an engine can put out. It can be expressed in <b>kilowatts (kW)</b> or <b>horsepower (HP)</b>. The power output depends on the size and design of the engine, but also on the speed at which it is running and the load or torque. Maximum power is achieved at relatively high speeds and at high load.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="power-weight" class="tab-content">
+
+        <div class="power-weight-slider">
+            <div class="slider-container">
+                <div id="power-weight-slider"></div>
+            </div>
+            <small><i class='icon-p-plate'></i> P-platers are probihited to drive any cars with power-to-weight ratios higher than <b>130 Wkg</b></small>
+            <button class="btn-submit" type="button">Search cars</button>
+
+            <div class="slider-details">
+                <p>You have selected cars with power / weight ratio from <strong></b><span class="min-value"></span></strong> to <strong><span class="max-value"></span></strong> Wkg</p>
+
+                <div class="column-container">
+                    <div class="column-min column">
+                        <h4>From <span class="min-value"></span> Wkg</h4>
+                        <ul>
+                        </ul>
+                    </div>
+
+                    <div class="column-max column">
+                        <h4>Up to <span class="max-value"></span> Wkg</h4>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footnote">
+                    <h5>Did you know?</h5>
+                    <p>Generally, a car with a high power to weight ratio will accelerate faster than one with a low power to weight ratio.</p>
+                    <p>For example, a motorcycle is fast despite having a small engine in comparison to a truck because the power to weight ratio is greater than that of a truck. This means, if two vehicles had the same size engine, such as a motorcycle and car, the motorcyle is more likely to be fastest because it has less weight to move.</p>
+                    <p>Power to weight ratio is single handedly one of the best predicting techniques to measure speed.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
                         </div>
                     </div>
                 </div>
