@@ -15,12 +15,10 @@ app.ready = function() {
 
   $('.anchor-power').click(function() {
     $('.page-wrapper').toggleClass('showing-popup');
-    $('#tab-container').easytabs('select', '#power');
   });
 
   $('.anchor-power-weight').click(function() {
     $('.page-wrapper').toggleClass('showing-popup');
-    $('#tab-container').easytabs('select', '#power-weight');
   });
 
   $('.power-weight-slider .btn-submit').click(function() {
