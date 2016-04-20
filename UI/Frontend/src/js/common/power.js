@@ -117,11 +117,12 @@ Power = {
   },
 
   populateResults: function() {
-    // console.log('parseResults');
+    console.log('parseResults for power');
     var results = this.results;
     var top3FromMin = _.sampleSize(_.uniqBy(_.shuffle(results.MinRange), 'Make'), 3);
     var top3FromMax = _.sampleSize(_.uniqBy(_.shuffle(results.MaxRange), 'Make'), 3);
 
+    $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
     $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
 
     _.map(top3FromMin, function(item) {
@@ -135,6 +136,7 @@ Power = {
   },
 
   resetResults: function() {
+    $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
     $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
   }
 }

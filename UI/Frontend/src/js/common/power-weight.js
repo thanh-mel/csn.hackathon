@@ -125,17 +125,17 @@ PowerWeightRatio = {
             _this.submitUrl = null;
           } else {
             _this.submitUrl = JSON.parse(xhr.response).Url;
-            // console.log('set url: ' + _this.submitUrl);
           }
         });
   },
 
   populateResults: function() {
-    // console.log('parseResults');
+    console.log('parseResults for power-weight');
     var results = this.results;
     var top3FromMin = _.sampleSize(_.uniqBy(_.shuffle(results.MinRange), 'Make'), 3);
     var top3FromMax = _.sampleSize(_.uniqBy(_.shuffle(results.MaxRange), 'Make'), 3);
 
+    $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').empty();
     $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').removeClass('is-loading');
 
     _.map(top3FromMin, function(item) {
@@ -149,6 +149,7 @@ PowerWeightRatio = {
   },
 
   resetResults: function() {
+    $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').empty();
     $('.power-weight-slider .column-min ul, .power-weight-slider .column-max ul').removeClass('is-loading');
   }
 }
