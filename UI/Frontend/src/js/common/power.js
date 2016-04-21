@@ -103,6 +103,7 @@ Power = {
 
     $('.power-slider .column-min ul, .power-slider .column-max ul').addClass('is-loading');
     $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
+    $('.power-slider li a').tipso('destroy');
 
     promise.get('http://inchcape.stocklocator.csdt279.dev.au/api/cars/range/power?min=' + minVal + '&max=' + maxVal + '&year=2011')
         .then(function(error, text, xhr) {
@@ -124,20 +125,36 @@ Power = {
 
     $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
     $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
+    $('.power-slider li a').tipso('destroy');
 
     _.map(top3FromMin, function(item) {
       item.encodedUrl = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(item.Url);
-      $('.power-slider .column-min ul').append('<li><a href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
-    })
+      item.Image = '<img src=http://carsales.li.csnstatic.com' + item.ImageUrl + ' alt= />';
+
+      $('.power-slider .column-min ul').append('<li><a data-tipso="' + item.Image + '" data-tipso-title="'+ item.Make + ' ' + item.Model +'" href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
+
+    });
     _.map(top3FromMax, function(item) {
       item.encodedUrl = 'http://www.carsales.com.au/cars/results?q=' + encodeURIComponent(item.Url);
-      $('.power-slider .column-max ul').append('<li><a href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
-    })
+      item.Image = '<img src=http://carsales.li.csnstatic.com' + item.ImageUrl + ' alt= />';
+
+      $('.power-slider .column-max ul').append('<li><a data-tipso="' + item.Image + '" data-tipso-title="'+ item.Make + ' ' + item.Model +'" href="' + item.encodedUrl + '" target="_blank">' + item.Make + ' ' + item.Model + ' </a></li>');
+    });
+    $('.power-slider li a').tipso({
+      useTitle: false,
+      tooltipHover: true,
+      titleBackground: '#004F88',
+      background: '#',
+      size: 'large',
+      position: 'right',
+      showArrow: false
+    });
   },
 
   resetResults: function() {
     $('.power-slider .column-min ul, .power-slider .column-max ul').empty();
     $('.power-slider .column-min ul, .power-slider .column-max ul').removeClass('is-loading');
+    $('.power-slider li a').tipso('destroy');
   }
 }
 

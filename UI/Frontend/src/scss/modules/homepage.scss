@@ -7,18 +7,6 @@
     background-size: contain;
     position: relative;
 
-    // &:before {
-    //   content: '';
-    //   background: transparent url('/Assets/images/image-1.jpg') no-repeat top left;
-    //   background-size: contain;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   display: block;
-    //   width: 100%;
-    //   height: 100%;
-    // }
-
     &:after {
         @include transition(all .1s ease-in);
         content: '';
@@ -42,8 +30,9 @@
         opacity: 1;
       }
       .popup {
-        opacity: 1;
+        // opacity: 1;
         // visibility: visible;
+        display: block;
       }
       .anchor-power {
         background: transparent url('/Assets/images/image-power-field.jpg') no-repeat 0 0;
@@ -86,8 +75,9 @@
 
   .popup {
     @include transition(all .1s ease-in);
-    opacity: 0;
+    // opacity: 0;
     // visibility: hidden;
+    display: none;
     position: absolute;
     top: 1475px;
     left: 240px;
@@ -174,4 +164,22 @@
     padding: 10px;
     -moz-border-radius: 0 6px 6px 6px;
     -webkit-border-radius: 0 6px 6px 6px;
+}
+.tipso_bubble {
+  border: 2px solid #004F88;
+  background-color: #EEE;
+  img {
+    width: 96%;
+    min-height: 113px;
+    display: block;
+  }
+}
+.tipso_style {
+  cursor: pointer;
+  border: 0;
+}
+.tipso_title {
+  border-radius: 0;
+  font-size: .9em;
+  padding: 3px 0 2px;
 }
